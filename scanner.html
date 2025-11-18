@@ -1,0 +1,9 @@
+<script src="https://unpkg.com/html5-qrcode"></script>
+<div id="reader" style="width:300px;"></div>
+<script>
+function onScanSuccess(decodedText) {
+    fetch('/card/' + decodedText)
+      .then(r => { if(r.status==200){window.location='/card/'+decodedText}else{window.location='/register/'+decodedText} });
+}
+new Html5QrcodeScanner("reader",{fps:10,qrbox:250}).render(onScanSuccess);
+</script>
