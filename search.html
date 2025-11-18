@@ -1,0 +1,20 @@
+<h1>検索</h1>
+<form method="post">
+  名前: <input name="name"><br>
+  レアリティ: <input name="rarity"><br>
+  発送済: <select name="shipped">
+      <option value="">全て</option>
+      <option value="1">発送済</option>
+      <option value="0">未発送</option>
+  </select><br>
+  <button>検索</button>
+</form>
+
+{% if results %}
+  <h2>検索結果</h2>
+  <ul>
+    {% for r in results %}
+      <li>{{r['code']}} : {{r['name']}} | <a href="/card/{{r['code']}}">表示/編集</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
